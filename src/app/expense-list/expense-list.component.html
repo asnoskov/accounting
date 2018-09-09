@@ -1,0 +1,8 @@
+<p>
+  Expenses:
+</p>
+<ul *ngIf="expenseService.expenses">
+  <li *ngFor="let exp of expenseService.expenses">
+    {{exp.amount}} ({{exp.description}})
+  </li>
+</ul>

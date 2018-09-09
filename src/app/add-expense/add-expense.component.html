@@ -1,0 +1,8 @@
+
+
+  <h1>Add expense</h1>
+  <label for="amount">Amount:</label>
+  <input type="text" name="amount" [(ngModel)]="amount"/>
+  <label for="description">Description:</label>
+  <input type="text" name="description" [(ngModel)]="description"/>
+  <input type="button" value="Add" (click)="addExpense()">
