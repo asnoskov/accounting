@@ -2,7 +2,17 @@
   Expenses:
 </p>
 <ul *ngIf="expenseService.expenses">
-  <li *ngFor="let exp of expenseService.expenses">
+  <li *ngFor="let exp of expenseService.getExpenses(null, null) | async">
     {{exp.amount}} ({{exp.description}})
+    <input type="button" value="remove" (click)="removeExpense(exp)">
+  </li>
+</ul>
+
+<p>
+  Categories:
+</p>
+<ul>
+  <li *ngFor="let cat of getCategories()">
+    {{cat.id}} {{cat.name}}
   </li>
 </ul>

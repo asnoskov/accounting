@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ExpenseService } from '../expense.service';
+import { ExpenseService } from '../expense/expense.service';
+import { Expense } from '../expense/models/expense';
+import { ExpenseCategoryService } from '../expense-category/expense-category.service';
+import { ExpenseCategory } from '../expense-category/models/expense-category';
 
 @Component({
   selector: 'app-expense-list',
@@ -8,9 +11,16 @@ import { ExpenseService } from '../expense.service';
 })
 export class ExpenseListComponent implements OnInit {
 
-  constructor(private expenseService: ExpenseService) { }
+  constructor(private expenseService: ExpenseService, private expenseCategoryService: ExpenseCategoryService) { }
 
   ngOnInit() {
   }
 
+  removeExpense(expense: Expense) {
+    this.expenseService.removeExpense(expense.id);
+  }
+
+  getCategories(): ExpenseCategory[]{
+    return this.expenseCategoryService.getCategories();
+  }
 }
